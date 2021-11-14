@@ -1,5 +1,6 @@
 <script>
   import '../app.css';
+  import MainMenu from '$lib/components/MainMenu/MainMenu.svelte';
 </script>
 
 <style>
@@ -12,8 +13,15 @@
 
     min-width: 90vw;
   }
+
+  #main-menu-container {
+    position: fixed;
+    bottom: 1vh;
+  }
 </style>
 
 <article>
-
+  <section id='main-menu-container'>
+    <MainMenu />
+  </section>
 </article>
