@@ -1,5 +1,6 @@
 <script>
   import LRButton from './LRButton.svelte';
+  import MainButton from './MainButton.svelte';
 </script>
 
 <style>
@@ -12,16 +13,22 @@
       'L C R'
       '. . .'
     ;
+    gap: min(0.25vh, 0.25vw);
 
     background-color: hsl(0deg 0% 5% / 42%);
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
     position: relative;
+
+    padding: max(0.125vw, 0.125vh);
+
+    z-index: 1;
   }
 
   #move-left,
-  #move-right {
+  #move-right,
+  #center {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,13 +46,7 @@
 
   #center {
     grid-area: C;
-    background-color: red;
-    width: 90%;
-    height: 90%;
-    justify-self: center;
-    align-self: center;
-
-    border-radius: 50%;
+    align-items: center;
   }
 </style>
 
@@ -53,7 +54,9 @@
   <div id='move-left'>
     <LRButton />
   </div>
-  <div id='center'>&nbsp;</div>
+  <div id='center'>
+    <MainButton />
+  </div>
   <div id='move-right'>
     <LRButton />
   </div>
