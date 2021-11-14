@@ -14,14 +14,14 @@
     min-width: 90vw;
   }
 
-  #main-menu-container {
+  #main-menu {
     position: fixed;
     bottom: 1vh;
   }
 </style>
 
 <article>
-  <section id='main-menu-container'>
+  <section id='main-menu'>
     <MainMenu />
   </section>
 </article>

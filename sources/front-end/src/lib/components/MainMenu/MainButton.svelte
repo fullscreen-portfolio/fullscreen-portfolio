@@ -1,20 +1,27 @@
 <style>
-  div {
+  label {
     width: 100%;
     height: 100%;
     justify-self: center;
     align-self: center;
 
-    border-radius: 50%;
-
     cursor: pointer;
 
-    background-color: hsl(0deg 0% 43%);
+    background-color: hsl(205deg 63% 63% / 44%);
+    transition: background-color 0.5s var(--transition-timing-function) 0s;
+    border-radius: max(0.25vw, 0.25vh);
   }
 
-  div:hover {
+  /* label > input[type='checkbox'] {
+    display: none !important;
+  } */
+
+  label:hover {
     background-color: hsl(205deg 63% 63%);
+    transition: background-color 0.75s var(--transition-timing-function) 0s;
   }
 </style>
 
-<div></div>
+<label for='main-button-checkbox'>
+  <input id='main-button-checkbox' type='checkbox' />
+</label>
