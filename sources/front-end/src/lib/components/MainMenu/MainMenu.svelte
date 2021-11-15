@@ -1,12 +1,16 @@
 <script>
   import LRButton from './LRButton.svelte';
   import VoteControl from './VoteControl.svelte';
+  import NavMenuControl from './NavMenuControl.svelte';
   import ChevronLeft from '$lib/icons/chevron-left.svelte';
   import ChevronRight from '$lib/icons/chevron-right.svelte';
-  import MenuIcon from '$lib/icons/menu.svelte';
+  import MenuOpenIcon from '$lib/icons/menu.svelte';
+  import MenuCloseIcon from '$lib/icons/x.svelte';
+import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
 
   let mainMenuCointainer;
   let mainMenuHeight;
+  let mainMenuOpened = false;
 
   $: if (mainMenuHeight) {
     mainMenuCointainer.style.setProperty('--main-menu-container-height', `${mainMenuHeight}px`);
@@ -46,6 +50,11 @@
 
   #main-menu-container {
     --main-menu-container-height: 0;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5vh;
 
     width: 100%;
     height: 100%;
@@ -104,7 +113,7 @@
 
   #main-button-checkbox:checked ~ #main-menu-container {
     filter: opacity(1.0);
-    transform: translateY(calc(-1.125 * var(--main-menu-container-height)));
+    transform: translateY(calc(-1.125 * 1.75 * var(--main-menu-container-height)));
     transition: all var(--transition-duration) var(--transition-timing-function) 0.0s;
   }
 </style>
@@ -116,15 +125,24 @@
     </LRButton>
   </div>
   <label id='center' for='main-button-checkbox'>
-    <MenuIcon />
+    {#if mainMenuOpened === true}
+      <MenuCloseIcon />
+      {:else}
+      <MenuOpenIcon />
+    {/if}
   </label>
   <div id='move-right'>
     <LRButton>
       <ChevronRight />
     </LRButton>
   </div>
-  <input id='main-button-checkbox' type='checkbox' />
-  <div id='main-menu-container' bind:clientHeight={mainMenuHeight} bind:this={mainMenuCointainer}>   
-    <VoteControl on:vote={handleVote} />
+  <input id='main-button-checkbox' type='checkbox' bind:checked={mainMenuOpened} />
+  <div id='main-menu-container' bind:clientHeight={mainMenuHeight} bind:this={mainMenuCointainer}>  
+    {#if $page.path === '/'}
+      <VoteControl on:vote={handleVote} />
+      {:else}
+      <div></div>
+    {/if}
+    <NavMenuControl />
   </div>
 </div>

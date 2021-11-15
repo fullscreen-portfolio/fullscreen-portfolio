@@ -44,7 +44,7 @@
     ;
     gap: max(0.5vw, 0.5vh);
     width: 100%;
-    height: 100%;
+    min-height: 8rem;
     border-radius: var(--border-radius);
 
     background-color: hsl(213deg 72% 55%);

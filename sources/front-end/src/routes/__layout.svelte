@@ -21,6 +21,7 @@
 </style>
 
 <article>
+  <slot />
   <section id='main-menu'>
     <MainMenu />
   </section>
