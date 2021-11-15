@@ -10,7 +10,7 @@
     width: 100%;
     height: 100%;
 
-    font-size: max(3vw, 3vh);
+    /* font-size: max(3vw, 3vh); */
     color: hsl(25deg 100% 50% / 100%);
     filter: grayscale(1.0);
 
