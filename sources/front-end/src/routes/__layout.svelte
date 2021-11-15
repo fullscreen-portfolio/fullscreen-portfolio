@@ -4,25 +4,25 @@
 </script>
 
 <style>
-  article {
+  main {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
     justify-content: flex-start;
     align-items: center;
 
-    min-width: 90vw;
+    min-width: 100vw;
   }
 
-  #main-menu {
-    position: fixed;
+  #main-menu-container {
+    position: absolute;
     bottom: max(1vh, 1vw);
   }
 </style>
 
-<article>
+<main>
   <slot />
-  <section id='main-menu'>
-    <MainMenu />
-  </section>
-</article>
+</main>
+<section id='main-menu-container'>
+  <MainMenu />
+</section>
