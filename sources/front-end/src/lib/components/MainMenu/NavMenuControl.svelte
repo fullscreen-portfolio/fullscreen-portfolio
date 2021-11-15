@@ -13,6 +13,10 @@ import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
     background-color: hsl(39deg 72% 55%);
 
     border-radius: var(--border-radius);
+
+    flex: 1 0 auto;
+    width: 100%;
+    height: 100%;
   }
 
   .menu-item {
@@ -30,11 +34,21 @@ import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
     cursor: pointer;
 
     border-radius: var(--border-radius);
+
+    filter: blur(1px) opacity(0.8);
+    border-bottom: 6px solid transparent;
+    transition: all calc(4 * var(--transition-duration)) var(--transition-timing-function) 0s;
   }
 
-  .active {
-    color: red;
-    background-color: yellow;
+  /* .active {
+    filter: blur(0);
+  } */
+
+  .menu-item.active,
+  .menu-item:not(.active):hover {
+    filter: blur(0px) opacity(1.0);
+    border-bottom-color: hsl(0deg 0% 100%);
+    transition: all calc(4 * var(--transition-duration)) var(--transition-timing-function) 0s;
   }
 </style>
 

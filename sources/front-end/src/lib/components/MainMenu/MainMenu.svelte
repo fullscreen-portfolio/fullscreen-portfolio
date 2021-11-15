@@ -51,13 +51,14 @@ import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
   #main-menu-container {
     --main-menu-container-height: 0;
 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 0.5vh;
+    justify-content: flex-end;
+    align-items: center;
 
     width: 100%;
-    height: 100%;
+    height: fit-content;
     position: absolute;
 
     filter: opacity(0.0);
@@ -113,7 +114,7 @@ import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
 
   #main-button-checkbox:checked ~ #main-menu-container {
     filter: opacity(1.0);
-    transform: translateY(calc(-1.125 * 1.75 * var(--main-menu-container-height)));
+    transform: translateY(calc(-1.0 * var(--main-menu-container-height) - 1vh));
     transition: all var(--transition-duration) var(--transition-timing-function) 0.0s;
   }
 </style>
