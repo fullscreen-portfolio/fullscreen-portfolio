@@ -16,7 +16,7 @@
 
   #main-menu {
     position: fixed;
-    bottom: 1vh;
+    bottom: max(1vh, 1vw);
   }
 </style>
 

@@ -1,16 +1,23 @@
 <script>
   import LRButton from './LRButton.svelte';
-
-  const Arrows = Object.freeze({
-    left: '❮',
-    right: '❯',
-  });
+  import VoteControl from './VoteControl.svelte';
+  import ChevronLeft from '$lib/icons/chevron-left.svelte';
+  import ChevronRight from '$lib/icons/chevron-right.svelte';
+  import MenuIcon from '$lib/icons/menu.svelte';
 
   let mainMenuCointainer;
   let mainMenuHeight;
 
   $: if (mainMenuHeight) {
     mainMenuCointainer.style.setProperty('--main-menu-container-height', `${mainMenuHeight}px`);
+  }
+
+  const handleVote = ({ detail: { payload } }) => {
+    if (typeof payload !== 'undefined') {
+      console.log('handleVote:', payload);
+    } else {
+      console.log('clear vote');
+    }
   }
 </script>
 
@@ -28,8 +35,8 @@
 
     background-color: hsl(0deg 0% 5% / 42%);
     width: max(10vw, 10vh);
-    height: 8rem;
-    border-radius: max(0.125vw, 0.125vh);
+    min-height: 8rem;
+    border-radius: var(--border-radius);
     position: relative;
 
     padding: max(0.25vw, 0.25vh);
@@ -40,7 +47,6 @@
   #main-menu-container {
     --main-menu-container-height: 0;
 
-    background-color: hsl(283deg 72% 55%);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -70,20 +76,25 @@
 
   #center {
     grid-area: C;
-    width: 100%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     justify-self: center;
     align-self: center;
 
+    width: 100%;
+    height: 100%;
+
     cursor: pointer;
 
-    background-color: hsl(205deg 63% 63% / 44%);
-    transition: background-color 0.5s var(--transition-timing-function) 0s;
-    border-radius: max(0.25vw, 0.25vh);
+    /* color: hsl(213deg 72% 55% / 30%); */
+    transition: background-color 0.75s var(--transition-timing-function) 0s;
+    border-radius: var(--border-radius);
   }
 
   #center:hover {
-    background-color: hsl(205deg 63% 63%);
+    color: hsl(213deg 72% 55%);
     transition: background-color 0.75s var(--transition-timing-function) 0s;
   }
 
@@ -93,21 +104,27 @@
 
   #main-button-checkbox:checked ~ #main-menu-container {
     filter: opacity(1.0);
-    transform: translateY(calc(-1 * var(--main-menu-container-height)));
+    transform: translateY(calc(-1.125 * var(--main-menu-container-height)));
     transition: all var(--transition-duration) var(--transition-timing-function) 0.0s;
   }
 </style>
 
 <div id='main-menu-control'>
   <div id='move-left'>
-    <LRButton>{Arrows.left}</LRButton>
+    <LRButton>
+      <ChevronLeft />
+    </LRButton>
   </div>
-  <label id='center' for='main-button-checkbox'></label>
+  <label id='center' for='main-button-checkbox'>
+    <MenuIcon />
+  </label>
   <div id='move-right'>
-    <LRButton>{Arrows.right}</LRButton>
+    <LRButton>
+      <ChevronRight />
+    </LRButton>
   </div>
   <input id='main-button-checkbox' type='checkbox' />
-  <div id='main-menu-container' bind:clientHeight={mainMenuHeight} bind:this={mainMenuCointainer}>
-    main-menu-container
+  <div id='main-menu-container' bind:clientHeight={mainMenuHeight} bind:this={mainMenuCointainer}>   
+    <VoteControl on:vote={handleVote} />
   </div>
 </div>
