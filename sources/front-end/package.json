@@ -1,7 +1,17 @@
 {
   "name": "front-end",
   "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": "^17.1.0",
+    "pnpm": "^6.22.2"
+  },
+  "engineStrict": true,
+  "volta": {
+    "node": "17.1.0"
+  },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
@@ -17,6 +27,5 @@
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
     "svelte": "^3.42.6"
-  },
-  "type": "module"
+  }
 }
