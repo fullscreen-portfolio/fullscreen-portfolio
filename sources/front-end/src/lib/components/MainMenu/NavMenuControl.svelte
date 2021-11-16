@@ -37,6 +37,8 @@ import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
 
     filter: blur(1px) opacity(0.8);
     border-bottom: 6px solid transparent;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     transition: all calc(4 * var(--transition-duration)) var(--transition-timing-function) 0s;
   }
 
