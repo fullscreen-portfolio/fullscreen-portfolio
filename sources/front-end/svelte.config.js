@@ -14,7 +14,7 @@ const config = {
     target: '#portfolio',
     hydrate: true,
     router: true,
-    ssr: true,
+    ssr: false,
   }
 };
 
