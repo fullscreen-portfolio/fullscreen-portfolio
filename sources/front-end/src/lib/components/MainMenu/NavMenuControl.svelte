@@ -1,8 +1,9 @@
 <script>
+  import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
   import HomeIcon from '$lib/icons/home.svelte';
   import ServicesIcon from '$lib/icons/aperture.svelte';
   import MailIcon from '$lib/icons/mail.svelte';
-import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
+  import SettingsIcon from '$lib/icons/settings.svelte';
 </script>
 
 <style>
@@ -63,5 +64,8 @@ import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
   </a>
   <a sveltekit:prefetch href='/contact-us' rel='noreferrer' class='menu-item' class:active={$page.path === '/contact-us'}>
     <MailIcon />
+  </a>
+  <a sveltekit:prefetch href='/account' rel='noreferrer' class='menu-item' class:active={$page.path === '/account'}>
+    <SettingsIcon />
   </a>
 </div>
