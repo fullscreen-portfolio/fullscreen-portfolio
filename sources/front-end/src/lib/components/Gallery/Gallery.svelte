@@ -1,14 +1,10 @@
 <style>
   article {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    justify-self: center;
-    align-self: center;
-
     max-width: min(95vh, 95vw);
     max-height: min(95vh, 95vw);
+
+    top: calc((100vh - min(95vh, 95vw)) / 2);
+    position: absolute;
   }
 
   img {
