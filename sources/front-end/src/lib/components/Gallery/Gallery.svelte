@@ -19,7 +19,8 @@
 
 <article>
   <picture>
-    <source srcset="/images/DSC_0132.jpg" media="(max-height: 2040px)">
-    <img srcset="/images/DSC_0132.jpg" alt="Shopify Merchant, Corrine Anestopoulos">
+    <source srcset='/images/DSC_0132.iPad.jpg' media='(max-width: 768px)' type='image/jpeg'>
+    <source srcset='/images/DSC_0132.jpg' type='image/jpeg'>
+    <img srcset='/images/DSC_0132.jpg' alt='Shopify Merchant, Corrine Anestopoulos'>
   </picture>
 </article>
