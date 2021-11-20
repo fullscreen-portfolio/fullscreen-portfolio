@@ -1,9 +1,19 @@
-<style>
-  article {
-    max-width: min(95vh, 95vw);
-    max-height: min(95vh, 95vw);
+<script>
+  const fetchGallery = async () => {
+    return await (await fetch('/gallery', {})).json();
+  }
+</script>
 
-    top: calc((100vh - min(95vh, 95vw)) / 2);
+<style>
+  :root {
+    --gallery-image-size: min(95vh, 95vw);
+  }
+
+  article {
+    max-width: var(--gallery-image-size);
+    max-height: var(--gallery-image-size);
+
+    top: calc((100vh - var(--gallery-image-size)) / 2);
     position: absolute;
   }
 
@@ -12,15 +22,23 @@
     object-position: 50% 50%;
     object-fit: contain;
 
-    max-width: min(95vh, 95vw);
-    max-height: min(95vh, 95vw);
+    max-width: var(--gallery-image-size);
+    max-height: var(--gallery-image-size);
   }
 </style>
 
 <article>
-  <picture>
-    <source srcset='/images/DSC_0132.iPad.jpg' media='(max-width: 768px)' type='image/jpeg'>
-    <source srcset='/images/DSC_0132.jpg' type='image/jpeg'>
-    <img srcset='/images/DSC_0132.jpg' alt='Shopify Merchant, Corrine Anestopoulos'>
-  </picture>
+  {#await fetchGallery()}
+  {:then pictures}
+    {#each pictures as pictureSource (pictureSource.id)}
+      <picture id={pictureSource.id}>
+        {#each pictureSource.sources as source}
+          <source {...source}>
+        {/each}
+        <img {...pictureSource.img}>
+      </picture>
+    {/each}
+  {:catch error}
+    <p>{error.message}</p>
+  {/await}
 </article>
