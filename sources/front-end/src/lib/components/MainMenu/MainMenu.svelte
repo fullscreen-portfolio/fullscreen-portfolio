@@ -1,6 +1,6 @@
 <script>
   import LRButton from './LRButton.svelte';
-  import VoteControl from './VoteControl.svelte';
+  // import VoteControl from './VoteControl.svelte';
   import NavMenuControl from './NavMenuControl.svelte';
   import ChevronLeft from '$lib/icons/chevron-left.svelte';
   import ChevronRight from '$lib/icons/chevron-right.svelte';
@@ -139,11 +139,11 @@ import { page } from '../../../../.svelte-kit/dev/runtime/app/stores';
   </div>
   <input id='main-button-checkbox' type='checkbox' bind:checked={mainMenuOpened} />
   <div id='main-menu-container' bind:clientHeight={mainMenuHeight} bind:this={mainMenuCointainer}>  
-    {#if $page.path === '/'}
+    <!-- {#if $page.path === '/'}
       <VoteControl on:vote={handleVote} />
       {:else}
       <div></div>
-    {/if}
+    {/if} -->
     <NavMenuControl />
   </div>
 </div>
